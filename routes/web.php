@@ -19,8 +19,9 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
 Route::get('/', 'PostsController@index');
+Route::post('/comments/store',['as' => 'comments.store', 'uses' => 'CommentsController@store']);
 Route::resource('posts', 'PostsController');
 
-Route::group(['middleware' => 'auth', 'namespace' => 'Backend', 'prefix' => 'backend'], function() {
+Route::group(['middleware' => 'auth', 'namespace' => 'Backend', 'prefix' => 'backend', 'as' => 'backend::'], function() {
    Route::resource('posts', 'PostsController'); 
 });

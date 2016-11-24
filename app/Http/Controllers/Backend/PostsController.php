@@ -35,6 +35,16 @@ class PostsController extends Controller
     
     public function edit($id)
     {
-        $post = Post::where($id);
+        $post = Post::find($id);
+        
+        return view('backend.posts.edit', compact('post'));
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $post = Post::find($id);
+        $post->update($request->only(['title', 'body']));
+        
+        return redirect()->route('backend::posts.index');
     }
 }
