@@ -1,10 +1,10 @@
 @if(isset($post))
     <form action="{{ route('backend::posts.update', $post->id) }}" method="post">
 @else
-    <form action="{{ route('backend::posts.create') }}" method="post">
+    <form action="{{ route('backend::posts.store') }}" method="post">
 @endif
         {{ csrf_field() }}
-        {{ isset($post) ? method_field('PUT') : method_field('POST') }}
+        {{ isset($post) ? method_field('PATCH') : null }}
         
         <div class="form-group">
             <label for="title">Заголовок</label>
